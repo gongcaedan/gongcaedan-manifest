@@ -1,6 +1,6 @@
 image:
-  repository: gongcaedan.kr.ncr.ntruss.com/gongcaedan/pledge-tracker
-  tag: "<sha>"                 # ← GitHub Actions가 여기 값을 커밋으로 갱신함
+  repository: registry.kr.ncr.ntruss.com/gongcaedan/pledge-tracker
+  tag: "f4a0654"
   pullPolicy: IfNotPresent
 
 replicaCount: 1
