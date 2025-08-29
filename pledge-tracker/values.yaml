@@ -1,5 +1,5 @@
 image:
-  repository: registry.kr.ncr.ntruss.com/gongcaedan/pledge-tracker
+  repository: gongcaedan.kr.ncr.ntruss.com/gongcaedan/pledge-tracker
   tag: "<sha>"                 # ← GitHub Actions가 여기 값을 커밋으로 갱신함
   pullPolicy: IfNotPresent
 
