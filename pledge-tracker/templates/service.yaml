@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pledge-tracker
+  labels: { app: pledge-tracker }
+spec:
+  type: {{ .Values.service.type }}
+  selector: { app: pledge-tracker }
+  ports:
+    - name: http
+      port: {{ .Values.service.port }}
+      targetPort: 8080

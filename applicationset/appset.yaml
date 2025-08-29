@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: gongcaedan-apps
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: "https://github.com/gongcaedan/gongcaedan-manifest.git"
+        revision: main
+        directories:
+          - path: pledge-tracker
+          #- path: candidate
+          #- path: api-gateway
+  template:
+    metadata:
+      name: "gc-{{path.basename}}"
+    spec:
+      project: default
+      source:
+        repoURL: "https://github.com/gongcaedan/gongcaedan-manifest.git"
+        targetRevision: main
+        path: "{{path}}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: gongcaedan
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
