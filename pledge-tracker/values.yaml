@@ -30,6 +30,24 @@ env:
       secretKeyRef:
         name: pledge-tracker-db
         key: DB_PASSWORD
-        
+
 imagePullSecrets:
   - name: ncr-cred           # 클러스터에 1회 생성하는 docker-registry secret 이름
+
+readinessProbe:
+  httpGet:
+    path: /actuator/health/readiness
+    port: 8080
+  initialDelaySeconds: 20   # 앱이 DB 붙는 시간이 길면 40~60까지 늘림 가능
+  periodSeconds: 10
+  timeoutSeconds: 2
+  failureThreshold: 6
+
+livenessProbe:
+  httpGet:
+    path: /actuator/health/liveness
+    port: 8080
+  initialDelaySeconds: 30
+  periodSeconds: 30
+  timeoutSeconds: 2
+  failureThreshold: 6

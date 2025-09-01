@@ -23,6 +23,17 @@ spec:
           {{- if .Values.env }}
           {{- toYaml .Values.env | nindent 12 }}
           {{- end }}
+
+          {{- if .Values.readinessProbe }}
+          readinessProbe:
+          {{- toYaml .Values.readinessProbe | nindent 6 }}
+          {{- end }}
+
+          {{- if .Values.livenessProbe }}
+          livenessProbe:
+          {{- toYaml .Values.livenessProbe | nindent 6 }}
+          {{- end }}
+          
           readinessProbe:
             httpGet: { path: /actuator/health, port: 8080 }
             initialDelaySeconds: 10
