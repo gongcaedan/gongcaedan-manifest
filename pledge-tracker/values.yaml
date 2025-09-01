@@ -18,15 +18,18 @@ env:
       secretKeyRef:
         name: pledge-tracker-db
         key: DB_URL
+
   - name: DB_USERNAME
     valueFrom:
       secretKeyRef:
         name: pledge-tracker-db
         key: DB_USERNAME
+
   - name: DB_PASSWORD
     valueFrom:
       secretKeyRef:
-        name: DB_PASSWORD
-
+        name: pledge-tracker-db
+        key: DB_PASSWORD
+        
 imagePullSecrets:
   - name: ncr-cred           # 클러스터에 1회 생성하는 docker-registry secret 이름
