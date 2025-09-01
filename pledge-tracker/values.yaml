@@ -9,9 +9,30 @@ service:
   type: ClusterIP
   port: 8080
 
-env:                          # 필요하면 여기 정의하고 deployment에서 참조
+env:
+  # 프로파일 → ConfigMap 참조
   - name: SPRING_PROFILES_ACTIVE
-    value: "prod"
+    valueFrom:
+      configMapKeyRef:
+        name: pledge-tracker-config
+        key: SPRING_PROFILES_ACTIVE
+
+  # DB → Secret 참조
+  - name: DB_URL
+    valueFrom:
+      secretKeyRef:
+        name: pledge-tracker-db
+        key: DB_URL
+  - name: DB_USERNAME
+    valueFrom:
+      secretKeyRef:
+        name: pledge-tracker-db
+        key: DB_USERNAME
+  - name: DB_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: pledge-tracker-db
+        key: DB_PASSWORD
 
 imagePullSecrets:
   - name: ncr-cred           # 클러스터에 1회 생성하는 docker-registry secret 이름
