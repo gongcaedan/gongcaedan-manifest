@@ -1,0 +1,53 @@
+image:
+  repository: gongcaedan.kr.ncr.ntruss.com/gongcaedan/candidate
+  tag: "dev"
+  pullPolicy: IfNotPresent
+
+replicaCount: 1
+
+service:
+  type: ClusterIP
+  port: 8080
+
+env:
+  - name: SPRING_PROFILES_ACTIVE
+    value: "prod"
+
+  - name: DB_URL
+    valueFrom:
+      secretKeyRef:
+        name: candidate-db
+        key: DB_URL
+
+  - name: DB_USERNAME
+    valueFrom:
+      secretKeyRef:
+        name: candidate-db
+        key: DB_USERNAME
+
+  - name: DB_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: candidate-db
+        key: DB_PASSWORD
+
+imagePullSecrets:
+  - name: ncr-cred           # 클러스터에 1회 생성하는 docker-registry secret 이름
+
+readinessProbe:
+  httpGet:
+    path: /actuator/health/readiness
+    port: 8080
+  initialDelaySeconds: 20   # 앱이 DB 붙는 시간이 길면 40~60까지 늘림 가능
+  periodSeconds: 10
+  timeoutSeconds: 2
+  failureThreshold: 6
+
+livenessProbe:
+  httpGet:
+    path: /actuator/health/liveness
+    port: 8080
+  initialDelaySeconds: 30
+  periodSeconds: 30
+  timeoutSeconds: 2
+  failureThreshold: 6

@@ -10,7 +10,7 @@ spec:
         revision: main
         directories:
           - path: pledge-tracker
-          #- path: candidate
+          - path: candidate
           #- path: api-gateway
   template:
     metadata:
