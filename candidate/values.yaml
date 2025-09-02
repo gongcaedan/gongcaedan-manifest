@@ -1,6 +1,6 @@
 image:
   repository: gongcaedan.kr.ncr.ntruss.com/gongcaedan/candidate
-  tag: "dev"
+  tag: "ab2dfaa"
   pullPolicy: IfNotPresent
 
 replicaCount: 1
