@@ -12,7 +12,7 @@ spec:
           - path: pledge-tracker
           - path: candidate
           - path: api-gateway
-          - path: eurekaserver
+          - path: eureka-server
           - path: user
   template:
     metadata:
