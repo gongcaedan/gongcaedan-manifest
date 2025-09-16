@@ -1,0 +1,20 @@
+image:
+  repository: gongcaedan.kr.ncr.ntruss.com/gongcaedan/api-gateway
+  tag: "latest"
+  pullPolicy: IfNotPresent
+
+replicaCount: 1
+
+service:
+  type: LoadBalancer   
+  port: 8080
+
+env:
+  - name: SPRING_PROFILES_ACTIVE
+    value: "prod"
+
+  - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+    value: "http://eureka-server:8761/eureka"
+
+imagePullSecrets:
+  - name: ncr-cred
