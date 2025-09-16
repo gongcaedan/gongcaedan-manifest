@@ -1,0 +1,41 @@
+image:
+  repository: gongcaedan.kr.ncr.ntruss.com/gongcaedan/eureka-server
+  tag: "latest"
+  pullPolicy: IfNotPresent
+
+replicaCount: 1
+
+service:
+  type: ClusterIP
+  port: 8761 
+
+env:
+  - name: SPRING_PROFILES_ACTIVE
+    value: "prod"
+
+  # DB를 쓰는 게 아니라면 Secret 필요 없음
+
+  # 유레카 자체 설정
+  - name: EUREKA_INSTANCE_HOSTNAME
+    value: "eureka-server"
+  - name: EUREKA_CLIENT_REGISTER_WITH_EUREKA
+    value: "false"   # 서버는 자기 자신 등록 X
+  - name: EUREKA_CLIENT_FETCH_REGISTRY
+    value: "false"
+
+readinessProbe:
+  httpGet:
+    path: /actuator/health
+    port: 8761
+  initialDelaySeconds: 10
+  periodSeconds: 10
+
+livenessProbe:
+  httpGet:
+    path: /actuator/health
+    port: 8761
+  initialDelaySeconds: 30
+  periodSeconds: 30
+
+imagePullSecrets:
+  - name: ncr-cred

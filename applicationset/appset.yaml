@@ -11,7 +11,9 @@ spec:
         directories:
           - path: pledge-tracker
           - path: candidate
-          #- path: api-gateway
+          - path: api-gateway
+          - path: eurekaserver
+          - path: user
   template:
     metadata:
       name: "gc-{{path.basename}}"
