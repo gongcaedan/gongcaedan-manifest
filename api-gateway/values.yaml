@@ -1,6 +1,6 @@
 image:
   repository: gongcaedan.kr.ncr.ntruss.com/gongcaedan/api-gateway
-  tag: "latest"
+  tag: "c22803e"
   pullPolicy: IfNotPresent
 
 replicaCount: 1
