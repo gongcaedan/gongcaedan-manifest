@@ -1,6 +1,6 @@
 image:
   repository: gongcaedan.kr.ncr.ntruss.com/gongcaedan/eureka-server
-  tag: "latest"
+  tag: "4828745"
   pullPolicy: IfNotPresent
 
 replicaCount: 1
