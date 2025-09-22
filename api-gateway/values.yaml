@@ -14,7 +14,13 @@ env:
     value: "prod"
 
   - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
-    value: "http://eureka-server:8761/eureka"
+    value: "http://eurekaserver:8761/eureka"
+
+  - name: JWT_SECRET_BASE64
+    valueFrom:
+      secretKeyRef:
+        name: gateway-secrets
+        key: JWT_SECRET_BASE64
 
 imagePullSecrets:
   - name: ncr-cred
