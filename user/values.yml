@@ -1,0 +1,38 @@
+image:
+  repository: gongcaedan.kr.ncr.ntruss.com/gongcaedan/user
+  tag: "ce47a22"
+  pullPolicy: IfNotPresent
+
+replicaCount: 1
+
+service:
+  type: LoadBalancer   
+  port: 8080
+
+env:
+  - name: SPRING_PROFILES_ACTIVE
+    value: "prod"
+
+  - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+    value: "http://eurekaserver:8761/eureka"
+  
+  - name: GOOGLE_CLIENT_ID
+    valueFrom:
+      secretKeyRef:
+        name: userservice-secrets
+        key: GOOGLE_CLIENT_ID
+
+  - name: GOOGLE_CLIENT_SECRET
+    valueFrom:
+      secretKeyRef:
+        name: userservice-secrets
+        key: GOOGLE_CLIENT_SECRET
+
+  - name: JWT_SECRET_BASE64
+    valueFrom:
+      secretKeyRef:
+        name: userservice-secrets
+        key: JWT_SECRET_BASE64
+
+imagePullSecrets:
+  - name: ncr-cred
