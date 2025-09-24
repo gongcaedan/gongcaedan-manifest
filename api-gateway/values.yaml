@@ -21,6 +21,14 @@ env:
       secretKeyRef:
         name: gateway-secrets
         key: JWT_SECRET_BASE64
-
+        
+resources:
+  requests:
+    cpu: "250m"
+    memory: "512Mi"
+  limits:
+    cpu: "500m"
+    memory: "1Gi"
+    
 imagePullSecrets:
   - name: ncr-cred
