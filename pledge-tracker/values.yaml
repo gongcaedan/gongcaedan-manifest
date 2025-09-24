@@ -33,11 +33,11 @@ env:
 
 resources:
   requests:
-    cpu: "250m"
-    memory: "512Mi"
+    cpu: "200m"
+    memory: "384Mi"
   limits:
-    cpu: "500m"
-    memory: "1Gi"
+    cpu: "400m"
+    memory: "640Mi"
 
 imagePullSecrets:
   - name: ncr-cred           # 클러스터에 1회 생성하는 docker-registry secret 이름
