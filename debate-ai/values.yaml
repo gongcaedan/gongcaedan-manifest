@@ -1,6 +1,6 @@
 image:
   repository: gongcaedan.kr.ncr.ntruss.com/gongcaedan/debate-ai
-  tag: "22db733"
+  tag: "bdcc550"
   pullPolicy: IfNotPresent
 
 replicaCount: 1
