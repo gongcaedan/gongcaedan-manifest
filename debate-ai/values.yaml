@@ -1,6 +1,6 @@
 image:
   repository: gongcaedan.kr.ncr.ntruss.com/gongcaedan/debate-ai
-  tag: "e5e99c7"
+  tag: "7b09761"
   pullPolicy: IfNotPresent
 
 replicaCount: 1
