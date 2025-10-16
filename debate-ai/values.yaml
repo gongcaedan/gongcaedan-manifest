@@ -1,0 +1,85 @@
+image:
+  repository: gongcaedan.kr.ncr.ntruss.com/gongcaedan/debate-ai
+  tag: "d074352"
+  pullPolicy: IfNotPresent
+
+replicaCount: 1
+
+service:
+  type: LoadBalancer
+  port: 8080
+
+env:
+  - name: APP_ENV
+    value: "prod"
+
+  - name: DB_KIND
+    valueFrom:
+      secretKeyRef:
+        name: debate-ai
+        key: DB_KIND
+
+  - name: DB_HOST
+    valueFrom:
+      secretKeyRef:
+        name: debate-ai
+        key: DB_HOST
+
+  - name: DB_PORT
+    valueFrom:
+      secretKeyRef:
+        name: debate-ai
+        key: DB_PORT
+
+  - name: DB_USER
+    valueFrom:
+      secretKeyRef:
+        name: debate-ai
+        key: DB_USER
+
+  - name: DB_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: debate-ai
+        key: DB_PASSWORD
+
+  - name: DB_NAME
+    valueFrom:
+      secretKeyRef:
+        name: debate-ai
+        key: DB_NAME
+      
+  - name: GEMINI_API_KEY
+    valueFrom:
+      secretKeyRef:
+        name: debate-ai
+        key: GEMINI_API_KEY
+
+resources:
+  requests:
+    cpu: "200m"
+    memory: "384Mi"
+  limits:
+    cpu: "400m"
+    memory: "640Mi"
+
+imagePullSecrets:
+  - name: ncr-cred           # 클러스터에 1회 생성하는 docker-registry secret 이름
+
+readinessProbe:
+  httpGet:
+    path: /actuator/health/readiness
+    port: 8080
+  initialDelaySeconds: 20   # 앱이 DB 붙는 시간이 길면 40~60까지 늘림 가능
+  periodSeconds: 10
+  timeoutSeconds: 2
+  failureThreshold: 6
+
+livenessProbe:
+  httpGet:
+    path: /actuator/health/liveness
+    port: 8080
+  initialDelaySeconds: 30
+  periodSeconds: 30
+  timeoutSeconds: 2
+  failureThreshold: 6
