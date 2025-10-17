@@ -68,18 +68,18 @@ imagePullSecrets:
 
 readinessProbe:
   httpGet:
-    path: /actuator/health/readiness
+    path: /healthz
     port: 8080
-  initialDelaySeconds: 20   # 앱이 DB 붙는 시간이 길면 40~60까지 늘림 가능
-  periodSeconds: 10
+  initialDelaySeconds: 10
+  periodSeconds: 5
   timeoutSeconds: 2
   failureThreshold: 6
 
 livenessProbe:
   httpGet:
-    path: /actuator/health/liveness
+    path: /healthz
     port: 8080
-  initialDelaySeconds: 30
-  periodSeconds: 30
+  initialDelaySeconds: 20
+  periodSeconds: 10
   timeoutSeconds: 2
   failureThreshold: 6
