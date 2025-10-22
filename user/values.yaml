@@ -42,5 +42,11 @@ env:
         name: userservice-secrets
         key: JWT_SECRET_BASE64
 
+  - name: REDIS_URL
+    valueFrom:
+      secretKeyRef:
+        name: userservice-secrets
+        key: REDIS_URL
+
 imagePullSecrets:
   - name: ncr-cred
