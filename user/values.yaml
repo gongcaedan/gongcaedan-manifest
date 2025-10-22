@@ -24,17 +24,23 @@ env:
   - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
     value: "http://eurekaserver:8761/eureka"
   
-  - name: GOOGLE_CLIENT_ID
+  - name: DB_URL
     valueFrom:
       secretKeyRef:
         name: userservice-secrets
-        key: GOOGLE_CLIENT_ID
+        key: DB_URL
 
-  - name: GOOGLE_CLIENT_SECRET
+  - name: DB_USERNAME
     valueFrom:
       secretKeyRef:
         name: userservice-secrets
-        key: GOOGLE_CLIENT_SECRET
+        key: DB_USERNAME
+
+  - name: DB_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: userservice-secrets
+        key: DB_PASSWORD
 
   - name: JWT_SECRET_BASE64
     valueFrom:
