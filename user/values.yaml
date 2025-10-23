@@ -1,6 +1,6 @@
 image:
   repository: gongcaedan.kr.ncr.ntruss.com/gongcaedan/user
-  tag: "bd9a230"
+  tag: "ee01672"
   pullPolicy: IfNotPresent
 
 replicaCount: 1
