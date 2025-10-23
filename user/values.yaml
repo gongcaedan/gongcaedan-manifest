@@ -1,6 +1,6 @@
 image:
   repository: gongcaedan.kr.ncr.ntruss.com/gongcaedan/user
-  tag: "a5bcd4f"
+  tag: "fdf377d"
   pullPolicy: IfNotPresent
 
 replicaCount: 1
