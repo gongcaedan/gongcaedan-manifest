@@ -13,7 +13,7 @@ spec:
           - path: candidate
           - path: api-gateway
           - path: eureka-server
-          - path: gongcaedan-auth
+          - path: user
           - path: debate-ai
   template:
     metadata:
