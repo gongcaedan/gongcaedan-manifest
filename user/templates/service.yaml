@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: user
-  labels: { app: user }
+  name: gongcaedan-auth
+  labels: { app: gongcaedan-auth }
 spec:
   type: {{ .Values.service.type }}
-  selector: { app: user }
+  selector: { app: gongcaedan-auth }
   ports:
     - name: http
       port: {{ .Values.service.port }}
