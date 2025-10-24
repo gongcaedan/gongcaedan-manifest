@@ -24,6 +24,9 @@ spec:
         repoURL: "https://github.com/gongcaedan/gongcaedan-manifest.git"
         targetRevision: main
         path: "{{path}}"
+        helm:
+          valueFiles:
+            - ../common/value-resource.yaml
       destination:
         server: https://kubernetes.default.svc
         namespace: gongcaedan
