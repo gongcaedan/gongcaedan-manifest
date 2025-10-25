@@ -1,6 +1,6 @@
 image:
   repository: gongcaedan.kr.ncr.ntruss.com/gongcaedan/candidate
-  tag: "9ac60d9"
+  tag: "44fdacb"
   pullPolicy: IfNotPresent
 
 replicaCount: 1
