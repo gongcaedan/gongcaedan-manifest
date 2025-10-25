@@ -1,6 +1,6 @@
 image:
   repository: gongcaedan.kr.ncr.ntruss.com/gongcaedan/pledge-tracker
-  tag: "ac7a7e6"
+  tag: "d60cec5"
   pullPolicy: IfNotPresent
 
 replicaCount: 1
